@@ -62,11 +62,11 @@ extension StorageService {
             
             // set job's imageURL
             let imageURL = String(describing: snapshot.metadata!.downloadURL()!)
-            if let userId = userId {
+            //if let userId = userId {
 //                UserService.manager.getUsersRef().child("\(userId)/imageURL").setValue(imageURL)
 //            } else if let postId = postId {
                 PostService.manager.getPostsRef().child("\(postId)/imageURL").setValue(imageURL)
-              }
+              //}
             }
             
 //            if isUpdatingUserImage {
@@ -95,9 +95,9 @@ extension StorageService {
 //
 //            //DBService.manager.getJobs().child("\(jobId)/imageURL").setValue(imageURL)
 //
-//            //DBService.manager.getJobs().child("\(jobId)").updateChildValues(["imageURL" :  imageURL])
+//            DBService.manager.getJobs().child("\(jobId)").updateChildValues(["imageURL" :  imageURL])
 //        }
-        
+    
         uploadTask.observe(.failure) { snapshot in
             if let error = snapshot.error as NSError? {
                 switch (StorageErrorCode(rawValue: error.code)!) {

@@ -19,7 +19,7 @@ class TabBarController: UITabBarController {
         ///UPload
         let uploadNavigation = UINavigationController(rootViewController: UploadViewController())
         
-        feedNavigation.tabBarItem = UITabBarItem(title: "Feed", image:#imageLiteral(resourceName: "meatly_logo"), tag: 0)
+        feedNavigation.tabBarItem = UITabBarItem(title: "Feed", image: UIImage.init(named: "AppIcon"), tag: 0)
         uploadNavigation.tabBarItem = UITabBarItem(title: "Upload", image:#imageLiteral(resourceName: "upload"), tag: 1)
         let tabList = [feedNavigation, uploadNavigation]
         viewControllers = tabList

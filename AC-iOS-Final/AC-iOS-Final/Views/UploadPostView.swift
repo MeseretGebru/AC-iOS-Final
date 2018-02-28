@@ -26,6 +26,7 @@ class UploadPostView: UIScrollView {
     }
     private func commonInit() {
         backgroundColor = .white
+        addImageButton.isHidden = false
         setupViews()
         setupConstraints()
     }
@@ -51,7 +52,7 @@ class UploadPostView: UIScrollView {
         text.textColor = UIColor.lightGray
         text.layer.borderColor = UIColor.lightGray.cgColor
         text.layer.borderWidth = 2
-        text.font = UIFont.systemFont(ofSize: fontSize / 1.3)
+        text.font = UIFont.boldSystemFont(ofSize: 14)
         return text
     }()
     
@@ -60,6 +61,11 @@ class UploadPostView: UIScrollView {
     addSubview(imageView)
     addSubview(addImageButton)
     addSubview(commentTextView)
+    }
+    
+    override func layoutSubviews() {
+        imageView.setNeedsLayout()
+        commentTextView.setNeedsLayout()
     }
     
     // MARK:- Constraints
@@ -80,10 +86,10 @@ class UploadPostView: UIScrollView {
         
         
         commentTextView.snp.makeConstraints { (make) in
-            make.top.equalTo(imageView.snp.bottom).offset(16)
-            make.centerX.equalTo(snp.centerX)
-            make.width.equalTo(snp.width)
-            make.bottom.equalTo(snp.bottom).offset(-16)
+            make.top.equalTo(imageView.snp.bottom)
+            make.leading.equalTo(safeAreaLayoutGuide.snp.leading)
+            make.trailing.equalTo(safeAreaLayoutGuide.snp.trailing)
+            make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom)
         }
     }
     

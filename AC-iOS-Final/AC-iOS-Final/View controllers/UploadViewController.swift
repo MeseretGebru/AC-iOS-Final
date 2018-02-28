@@ -54,7 +54,7 @@ class UploadViewController: UIViewController {
     private func setupViews() {
         view.addSubview(uploadView)
         uploadView.snp.makeConstraints { (make) in
-            make.edges.equalTo(view.snp.edges)
+            make.edges.equalTo(view.safeAreaLayoutGuide.snp.edges)
         }
     }
     
@@ -92,7 +92,8 @@ class UploadViewController: UIViewController {
 extension UploadViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            self.uploadView.addImageButton.setImage(pickedImage, for: .normal)
+            self.uploadView.imageView.image = pickedImage
+            self.uploadView.addImageButton.isHidden = true
             self.uploadView.addImageButton.setTitle("", for: .normal)
             //updateImageViewSize()
         }

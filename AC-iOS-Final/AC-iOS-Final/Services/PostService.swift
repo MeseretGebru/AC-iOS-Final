@@ -54,6 +54,7 @@ class PostService {
                 
             }
         }
+        StorageService.manager.storeImage(image: image, postId: post.ref.key, userId: nil, isUpdatingUserImage: false)
     }
     
     public func getImagePost(urlImage: String, completion: @escaping (UIImage) -> Void) {
